@@ -1,6 +1,7 @@
 {
   "scripts": {
-    "status:chain": "node scripts-js/startStatusAnvil.js"
+    "status:chain": "node scripts-js/startStatusAnvil.js",
+    "status:deploy": "node scripts-js/deployStatus.js "
   }
 }
 

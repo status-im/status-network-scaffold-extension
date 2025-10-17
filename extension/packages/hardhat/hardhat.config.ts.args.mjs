@@ -29,4 +29,20 @@ export const configOverrides = {
       accounts: ["$$deployerPrivateKey$$"],
     }
   },
+  // Configuration for hardhat-verify plugin
+  etherscan: {
+    apiKey: {
+      statusSepolia: 'abc',  // any non-empty string will work since Blockscout doesn't require an API key
+    },
+    customChains: [
+      {
+        network: 'statusSepolia',
+        chainId: 1_660_990_954,
+        urls: {
+          apiURL: 'https://sepoliascan.status.network/api',
+          browserURL: 'https://sepoliascan.status.network',
+        },
+      },
+    ],
+  },
 };

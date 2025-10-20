@@ -5,10 +5,11 @@
 export const preContent = "";
 export const extraConfigTypeName = "";
 export const configOverrides = {
+     // `viem.chains` provides the `statusSepolia` chain object with all the necessary chain information
     targetNetworks: ["$$chains.statusSepolia$$"],
     rpcOverrides: {
         "$$[chains.statusSepolia.id]$$": "https://public.sepolia.rpc.status.network",
     },
-    onlyLocalBurnerWallet: false,
+    onlyLocalBurnerWallet: false,   // to allow Burner Wallets usage on Status Network Sepolia
 };
-export const skipLocalChainInTargetNetworks = true;
+export const skipLocalChainInTargetNetworks = true;     // to enforce connection to Status Network Sepolia

@@ -38,7 +38,7 @@ You can choose any framework - Hardhat or Foundry.
       yarn hardhat:hardhat-verify --network statusSepolia ${0xYourDeployedContractAddress}
 
       # Foundry
-      
+      yarn status:verify --network statusSepolia
    ```
 
 4. Check out the deployed contract and play with it on the frontend at https://localhost:3000

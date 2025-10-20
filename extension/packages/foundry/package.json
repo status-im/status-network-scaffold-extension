@@ -1,0 +1,5 @@
+{
+    "scripts": {
+        "status:verify": "make verify-status RPC_URL=${1:-localhost}"
+    }
+}

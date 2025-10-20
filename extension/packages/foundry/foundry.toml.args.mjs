@@ -5,6 +5,6 @@
 export const extraProfileDefaults = `solc = "0.8.24"
 evm_version = "paris"`;
 export const extraRpcEndpoints = `statusSepolia = "https://public.sepolia.rpc.status.network"`;
-export const extraEthercsanConfig = "";
+export const extraEthercsanConfig = `statusSepolia = { key = "abc", url = "https://sepoliascan.status.network/api" }`;
 export const extraFormattingConfig = "";
 export const extraConfig = "";

@@ -1,6 +1,6 @@
 # Status Network Scaffold-ETH 2 Extension
 
-This repository is an extension for Scaffold-ETH 2 that provides pre-configured setups for deploying and interacting with contracts on the Status Network Sepolia testnet. All necessary Foundry and Hardhat configurations to connect to Status Network Sepolia are provided and explained in this extension. 
+This repository is an extension for Scaffold-ETH 2 that provides pre-configured setups for deploying and interacting with contracts on the Status Network Sepolia testnet. All necessary Foundry and Hardhat configurations to connect to Status Network Sepolia are provided and explained. 
 
 
 ## What you get
@@ -11,15 +11,23 @@ This repository is an extension for Scaffold-ETH 2 that provides pre-configured 
 - 🌐 **NextJS setup** connecting to Status Network Sepolia instead of SE2 default Anvil local chain
 
 
+## 📋 Prerequisites
+
+- 📦 [Yarn](https://yarnpkg.com/getting-started/install)
+- 🔨 If using the Foundry workflow (`forge`, `cast`, `anvil`), [Foundry](https://etfoundry.sh/)
+- 💡 Note: Hardhat is provided via project dependencies and run with Yarn; no global install is required. Foundry is a separate native toolchain you install locally.
+- 🔑 A deployer account, *testnet ETH unnecessary*. 
+
+
 ## 🚀 Quickstart
 
 1. Install the extension into a new or existing Scaffold‑ETH 2 workspace:
 
    ```bash
-   npx create-eth@latest -e status-im/status-network-scaffold-extension
+      npx create-eth@latest -e status-im/status-network-scaffold-extension
    ```
 
-You can choose any framework - Hardhat or Foundry. 
+You can choose either framework - Hardhat or Foundry. 
 
 2. Deploy to Status Network Sepolia:
 
@@ -35,16 +43,16 @@ You can choose any framework - Hardhat or Foundry.
 
    ```bash
       # Hardhat
-      yarn hardhat:hardhat-verify --network statusSepolia ${0xYourDeployedContractAddress}
+      yarn hardhat:hardhat-verify --network statusSepolia <YourDeployedContractAddress>
 
       # Foundry
       yarn status:verify --network statusSepolia
    ```
 
-4. Check out the deployed contract and play with it on the frontend at https://localhost:3000
+4. Check out the deployed contract and play with it on the frontend at http://localhost:3000
 
    ```bash
-   yarn start
+      yarn start
    ```
 
 
@@ -56,13 +64,14 @@ This extension includes all necessary configurations to connect to Status Networ
 - ⚡ **EVM version**: `Paris`
 - 🔗 **Public RPC endpoint**: `https://public.sepolia.rpc.status.network`
 
-#### 🔧 Frameworks configuration overview
+### 🔧 Frameworks configuration overview
 
 The above settings are pre-configured for you in:
 - 🔨Foundry: `extension/packages/foundry/foundry.toml.args.mjs`
 - ⚡ Hardhat: `extension/packages/hardhat/hardhat.config.ts.args.mjs`
+These are Scaffold-ETH 2 extension template files that will merge into the corresponding configs when the extension is installed. 
 
-#### 🌐 NextJS configuration
+### 🌐 NextJS configuration overview
 
 The Scaffold config for NextJS is overridden to have the frontend connect to Status Network Sepolia instead of the local Anvil chain, as is the case normally with Scaffold‑ETH 2 projects.
 
@@ -82,101 +91,16 @@ export const skipLocalChainInTargetNetworks = true;     // to enforce connection
 
 Through the above configuration, the NextJS will automatically connect to Status Network Sepolia when you run your frontend.
 
-#### 📄 Contracts included
+### 📄 Contracts included
 
 - `HelloStatusNetwork.sol`: a minimal example contract used to validate deployments and wiring for both Foundry and Hardhat.
 
-
-### 📋 Prerequisites
-
-- 📦 [Yarn](https://yarnpkg.com/getting-started/install)
-- 🔨 If using the Foundry workflow (`forge`, `cast`, `anvil`), [Foundry](https://getfoundry.sh/) installed
-- 💡 Note: Hardhat is provided via project dependencies and run with Yarn; no global install is required. Foundry is a separate native toolchain you install locally.
-- 🔑 A deployer account configured, *testnet ETH unnecessary*. 
-
-
-### Installation
-
-Inside your Scaffold‑ETH 2 project (or a clean workspace), run the `npx` command from Quickstart.
-
-### 🚀 Using the Extension
-
-Since this extension is pre-configured for Status Network Sepolia testnet, you don't need to run `yarn chain` (which starts a local blockchain). Instead, you'll connect and deploy directly to the Status Network testnet.
-
-#### ⚡ For Hardhat Users
-
-1. 🔑 **Set up your deployer account**:
-   ```bash
-   # Generate a new account or import existing one
-   yarn generate
-   # OR
-   yarn account:import
-   ```
-
-2. 💰 **Get testnet ETH**:
-   - Visit the Status Network faucet to get testnet ETH for your deployer account
-   - Check your account balance: `yarn account`
-
-3. 🚀 **Deploy to Status Network Sepolia**:
-   ```bash
-   # Deploy all contracts
-   yarn deploy --network statusSepolia
-   
-   # Deploy specific contract (if tagged)
-   yarn deploy --tags HelloStatusNetwork --network statusSepolia
-   ```
-
-4. ✅ **Verify contracts on Blockscout**:
-   ```bash
-   # Verify all deployed contracts
-   yarn verify --network statusSepolia
-   
-   # Verify specific contract with constructor args
-   yarn hardhat verify --network statusSepolia <CONTRACT_ADDRESS> "Hello Status Network!"
-   ```
-
-#### 🔨 For Foundry Users
-
-1. 🔑 **Set up your deployer account**:
-   ```bash
-   # Generate a new account
-   forge account new
-   # OR import existing private key
-   forge account import my-account
-   ```
-
-2. 💰 **Get testnet ETH**:
-   - Visit the Status Network faucet to get testnet ETH for your deployer account
-   - Check your account balance: `cast balance <YOUR_ADDRESS> --rpc-url statusSepolia`
-
-3. 🚀 **Deploy to Status Network Sepolia**:
-   ```bash
-   # Deploy using the pre-configured script
-   forge script script/DeployHelloStatusNetwork.s.sol \
-     --broadcast \
-     --rpc-url statusSepolia \
-     --private-key <YOUR_PRIVATE_KEY>
-   
-   # Deploy specific contract
-   forge script script/Deploy.s.sol \
-     --broadcast \
-     --rpc-url statusSepolia \
-     --private-key <YOUR_PRIVATE_KEY>
-   ```
-
-4. ✅ **Verify contracts on Blockscout**:
-   ```bash
-   # Verify using Foundry's verification script
-   forge script script/VerifyAll.s.sol \
-     --rpc-url statusSepolia \
-     --private-key <YOUR_PRIVATE_KEY>
-   ```
 
 #### ⚠️ Important Notes for Status Network Extension
 
 - 🚫 **No local chain needed**: Deploy directly to the testnet; you do not need to run `yarn chain`.
 - 🌐 **Always specify network**: Use `--network statusSepolia` for deploy and verify.
-- ✅ **Verification**: Use Blockscout, not Etherscan, for contract verification.
+- ✅ **Verification**: *Use Blockscout*, not Etherscan, for contract verification.
 - ⛽ **Gasless transactions**: Status Network is natively gasless; testnet ETH is optional. 
 - 💧 **Faucet**: If you still want testnet ETH, see the faucet in our [docs](https://docs.status.network).
 
@@ -186,9 +110,9 @@ Since this extension is pre-configured for Status Network Sepolia testnet, you d
 - ❌ **Deployment fails**: Ensure you have given the `--network statusSepolia` option
 - ❌ **Verification fails**: Status Network uses Blockscout, not Etherscan - make sure you're using the correct verification method
 - 🌐 **Network connection issues**: Verify the RPC URL `https://public.sepolia.rpc.status.network` is accessible
-- 🔑 **Private key issues**: Make sure your private key is properly configured in your environment or keystore
+- 🔑 **Account issues**: Make sure your account is properly configured through keystore or account import
 
-For more troubleshooting, consult the [Status Network docs](https://docs.status.network) and [Scaffold-ETH 2 guide](https://docs.scaffoldeth.io).
+For more troubleshooting, consult the references below.
 
 📚 **References:**
 - 📖 Status Network Docs: [`https://docs.status.network`](https://docs.status.network)

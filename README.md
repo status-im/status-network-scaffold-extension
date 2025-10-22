@@ -16,45 +16,54 @@ This repository is an extension for Scaffold-ETH 2 that provides pre-configured 
 - 📦 [Yarn](https://yarnpkg.com/getting-started/install)
 - 🔨 If using the Foundry workflow (`forge`, `cast`, `anvil`), [Foundry](https://etfoundry.sh/)
 - 💡 Note: Hardhat is provided via project dependencies and run with Yarn; no global install is required. Foundry is a separate native toolchain you install locally.
-- 🔑 A deployer account, *testnet ETH unnecessary*. 
+- 🔑 An EVM wallet to use as the deployer account, *testnet ETH unnecessary*. 
 
 
 ## 🚀 Quickstart
 
-1. Install the extension into a new or existing Scaffold‑ETH 2 workspace:
+### 1. Install the extension
 
-   ```bash
-      npx create-eth@latest -e status-im/status-network-scaffold-extension
-   ```
+```bash
+npx create-eth@latest -e status-im/status-network-scaffold-extension
+```
 
-You can choose either framework - Hardhat or Foundry. 
+Choose your preferred framework when prompted: Hardhat or Foundry. 
 
-2. Deploy to Status Network Sepolia:
+### 2. Configure Your Account
 
-   ```bash
-      # generate and configure a keystore account if you don't have one. 
-      yarn generate
+```bash
+yarn generate 
+# or
+yarn account:import
+```
 
-      # deploy to Status Network Sepolia testnet
-      yarn deploy --network statusSepolia
-   ```
+Refer to [Scaffold-ETH 2 docs](https://docs.scaffoldeth.io/deploying/deploy-smart-contracts#2-generate-a-new-account-or-add-one-to-deploy-the-contracts-from) for more details.
 
-3. Verify the deployed contract:
+### 3. Deploy to Status Network Sepolia
 
-   ```bash
-      # Hardhat
-      yarn hardhat:hardhat-verify --network statusSepolia <YourDeployedContractAddress>
+```bash
+yarn deploy --network statusSepolia
+```
 
-      # Foundry
-      yarn status:verify --network statusSepolia
-   ```
+### 4. Verify Your Contract
 
-4. Check out the deployed contract and play with it on the frontend at http://localhost:3000
+```bash
+# For Hardhat workflow
+yarn hardhat:hardhat-verify --network statusSepolia <YourDeployedContractAddress>
 
-   ```bash
-      yarn start
-   ```
+# For Foundry workflow
+yarn status:verify --network statusSepolia
+```
 
+### 5. Launch the Frontend
+
+Start the NextJS frontend to interact with your deployed contract:
+
+```bash
+yarn start
+```
+
+Visit http://localhost:3000 to see your contract in action. The frontend is pre-configured to connect to Status Network Sepolia.
 
 ## ⚙️ Pre-configured Status Network Sepolia Setup
 
@@ -69,6 +78,7 @@ This extension includes all necessary configurations to connect to Status Networ
 The above settings are pre-configured for you in:
 - 🔨Foundry: `extension/packages/foundry/foundry.toml.args.mjs`
 - ⚡ Hardhat: `extension/packages/hardhat/hardhat.config.ts.args.mjs`
+
 These are Scaffold-ETH 2 extension template files that will merge into the corresponding configs when the extension is installed. 
 
 ### 🌐 NextJS configuration overview
@@ -96,7 +106,7 @@ Through the above configuration, the NextJS will automatically connect to Status
 - `HelloStatusNetwork.sol`: a minimal example contract used to validate deployments and wiring for both Foundry and Hardhat.
 
 
-#### ⚠️ Important Notes for Status Network Extension
+### ⚠️ Important Notes for Status Network Extension
 
 - 🚫 **No local chain needed**: Deploy directly to the testnet; you do not need to run `yarn chain`.
 - 🌐 **Always specify network**: Use `--network statusSepolia` for deploy and verify.
@@ -107,10 +117,8 @@ Through the above configuration, the NextJS will automatically connect to Status
 
 ### 🔧 Troubleshooting
 
-- ❌ **Deployment fails**: Ensure you have given the `--network statusSepolia` option
-- ❌ **Verification fails**: Status Network uses Blockscout, not Etherscan - make sure you're using the correct verification method
-- 🌐 **Network connection issues**: Verify the RPC URL `https://public.sepolia.rpc.status.network` is accessible
-- 🔑 **Account issues**: Make sure your account is properly configured through keystore or account import
+- 🌐 **Network connection issues**: Verify the RPC URL `https://public.sepolia.rpc.status.network` is accessible.
+- 🔑 **Account issues**: Make sure your account is properly configured through keystore or account import.
 
 For more troubleshooting, consult the references below.
 

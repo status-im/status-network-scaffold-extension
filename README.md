@@ -14,7 +14,7 @@ This repository is an extension for Scaffold-ETH 2 that provides pre-configured 
 ## 📋 Prerequisites
 
 - 📦 [Yarn](https://yarnpkg.com/getting-started/install)
-- 🔨 If using the Foundry workflow (`forge`, `cast`, `anvil`), [Foundry](https://etfoundry.sh/)
+- 🔨 If using the Foundry workflow (`forge`, `cast`, `anvil`), [Foundry](https://getfoundry.sh/)
 - 💡 Note: Hardhat is provided via project dependencies and run with Yarn; no global install is required. Foundry is a separate native toolchain you install locally.
 - 🔑 An EVM wallet to use as the deployer account, *testnet ETH unnecessary*. 
 
